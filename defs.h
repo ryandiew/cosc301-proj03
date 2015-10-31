@@ -118,6 +118,11 @@ void            userinit(void);
 int             wait(void);
 void            wakeup(void*);
 void            yield(void);
+// 4 new added to proc.c 
+int kern_mprotect(struct proc*, void*, int);
+int do_mprotect(struct proc*, void *addr);
+int kern_munprotect(struct proc*, void*, int);
+int do_munprotect(struct proc*, void *addr);
 
 // swtch.S
 void            swtch(struct context**, struct context*);

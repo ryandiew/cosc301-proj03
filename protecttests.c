@@ -72,5 +72,5 @@ main(int argc, char *argv[])
   }
 
    printf(1, "TEST PASSED\n");
-   exit();
+   exit(); 
 }

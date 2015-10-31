@@ -89,3 +89,29 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+
+// added two syscalls 
+
+int sys_mprotect(void){
+  int len;
+  void *addr;
+
+  if(argptr(0, (char**) &addr, 4) < 0 || argint(1, &len) < 0) {
+    return -1;
+  }
+  
+  return kern_mprotect(proc, addr, len);
+ 
+}
+
+int sys_munprotect(void){
+  int len;
+  int *addr;
+
+  if(argptr(0, (char**) &addr, 4) < 0 || argint(1, &len) < 0) {
+    return -1;
+  }
+  
+  return kern_munprotect(proc, addr, len);
+ 
+}
